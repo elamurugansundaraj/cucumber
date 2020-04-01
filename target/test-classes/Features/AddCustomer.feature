@@ -1,4 +1,3 @@
-
 Feature: Add Customer in demo site
   Scenario: Add Customer With hard coded datas
     Given User launches demo site
@@ -7,10 +6,3 @@ Feature: Add Customer in demo site
     And user click on submit button
     Then user should be displayed customer ID is generated or not
    
-
-  
-  
-
-
-  
-  
