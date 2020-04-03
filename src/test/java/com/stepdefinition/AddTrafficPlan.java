@@ -5,8 +5,6 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,14 +12,7 @@ import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 
 public class AddTrafficPlan{
-	 static WebDriver driver;
-	@Given("User launche demo telecom site")
-	public void user_launche_demo_telecom_site() {
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\revathi ss\\eclipse-workspace\\cucumber\\driver\\chromedriver.exe");
-		 driver = new ChromeDriver();
-		 driver.get("http://demo.guru99.com/telecom/index.html");
-		  
-	}
+	
 
 	@Given("User click on add tariff plan button")
 	public void user_click_on_add_tariff_plan_button() throws Throwable {
@@ -29,7 +20,7 @@ public class AddTrafficPlan{
 			handleFrame();
 		}catch(Exception e) {
 		}
-	   driver.findElement(By.xpath("//a[text()='Add Tariff Plan']")).click();
+	   Hook.driver.findElement(By.xpath("//a[text()='Add Tariff Plan']")).click();
 	   
 	}
 
@@ -39,13 +30,13 @@ public class AddTrafficPlan{
 			handleFrame();
 		}catch(Exception e) {
 		}
-	   driver.findElement(By.id("rental1")).sendKeys("299");
-	   driver.findElement(By.id("local_minutes")).sendKeys("600");
-	   driver.findElement(By.id("inter_minutes")).sendKeys("300");
-	   driver.findElement(By.id("sms_pack")).sendKeys("100");
-	   driver.findElement(By.id("minutes_charges")).sendKeys("2");
-	   driver.findElement(By.id("inter_charges")).sendKeys("4");
-	   driver.findElement(By.id("sms_charges")).sendKeys("1");
+	   Hook.driver.findElement(By.id("rental1")).sendKeys("299");
+	   Hook.driver.findElement(By.id("local_minutes")).sendKeys("600");
+	   Hook.driver.findElement(By.id("inter_minutes")).sendKeys("300");
+	   Hook.driver.findElement(By.id("sms_pack")).sendKeys("100");
+	   Hook.driver.findElement(By.id("minutes_charges")).sendKeys("2");
+	   Hook.driver.findElement(By.id("inter_charges")).sendKeys("4");
+	   Hook.driver.findElement(By.id("sms_charges")).sendKeys("1");
 	}
 	
 	@When("User enters all the fields with one dimensional list")
@@ -55,13 +46,13 @@ public class AddTrafficPlan{
 			handleFrame();
 		}catch(Exception e) {
 		}
-	       driver.findElement(By.id("rental1")).sendKeys(data.get(0).get(0));
-		   driver.findElement(By.id("local_minutes")).sendKeys(data.get(1).get(0));
-		   driver.findElement(By.id("inter_minutes")).sendKeys(data.get(2).get(0));
-		   driver.findElement(By.id("sms_pack")).sendKeys(data.get(2).get(3));
-		   driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get(5));
-		   driver.findElement(By.id("inter_charges")).sendKeys(data.get(1).get(6));
-		   driver.findElement(By.id("sms_charges")).sendKeys(data.get(2).get(5));
+	       Hook.driver.findElement(By.id("rental1")).sendKeys(data.get(0).get(0));
+		   Hook.driver.findElement(By.id("local_minutes")).sendKeys(data.get(1).get(0));
+		   Hook.driver.findElement(By.id("inter_minutes")).sendKeys(data.get(2).get(0));
+		   Hook.driver.findElement(By.id("sms_pack")).sendKeys(data.get(2).get(3));
+		   Hook.driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get(5));
+		   Hook.driver.findElement(By.id("inter_charges")).sendKeys(data.get(1).get(6));
+		   Hook.driver.findElement(By.id("sms_charges")).sendKeys(data.get(2).get(5));
 	}
 	
 	@When("User enters all the fields with one dimension map")
@@ -71,18 +62,18 @@ public class AddTrafficPlan{
 			handleFrame();
 		}catch(Exception e) {
 		}
-	       driver.findElement(By.id("rental1")).sendKeys(data.get(0).get("Ren"));
-		   driver.findElement(By.id("local_minutes")).sendKeys(data.get(2).get("Loc"));
-		   driver.findElement(By.id("inter_minutes")).sendKeys(data.get(1).get("Int"));
-		   driver.findElement(By.id("sms_pack")).sendKeys(data.get(0).get("Msg"));
-		   driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get("LocRs"));
-		   driver.findElement(By.id("inter_charges")).sendKeys(data.get(1).get("IntRs"));
-		   driver.findElement(By.id("sms_charges")).sendKeys(data.get(0).get("MsgRs"));
+	       Hook.driver.findElement(By.id("rental1")).sendKeys(data.get(0).get("Ren"));
+		   Hook.driver.findElement(By.id("local_minutes")).sendKeys(data.get(2).get("Loc"));
+		   Hook.driver.findElement(By.id("inter_minutes")).sendKeys(data.get(1).get("Int"));
+		   Hook.driver.findElement(By.id("sms_pack")).sendKeys(data.get(0).get("Msg"));
+		   Hook.driver.findElement(By.id("minutes_charges")).sendKeys(data.get(2).get("LocRs"));
+		   Hook.driver.findElement(By.id("inter_charges")).sendKeys(data.get(1).get("IntRs"));
+		   Hook.driver.findElement(By.id("sms_charges")).sendKeys(data.get(0).get("MsgRs"));
 	}
 	
 	@When("Users click on submit button")
 	public void users_click_on_submit_button() {
-		driver.findElement(By.xpath("//input[@value='submit']")).click();
+		Hook.driver.findElement(By.xpath("//input[@value='submit']")).click();
 	}
 
 	@Then("Users should be displayed tariff plan  is added or not")
@@ -91,15 +82,15 @@ public class AddTrafficPlan{
 			handleFrame();
 		}catch(Exception e) {
 		}
-	Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).isDisplayed());
-	String text = driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).getText();
+	Assert.assertTrue(Hook.driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).isDisplayed());
+	String text = Hook.driver.findElement(By.xpath("//h2[text()='Congratulation you add Tariff Plan']")).getText();
 	   System.out.println(text);
 	}
 public void handleFrame() throws Throwable  {
 	Thread.sleep(5000);
-	   driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
-		 driver.findElement(By.id("closeBtn")).click();
-		 driver.switchTo().parentFrame();
+	   Hook.driver.switchTo().frame(Hook.driver.findElement(By.xpath("//*[@id=\"flow_close_btn_iframe\"]")));
+		 Hook.driver.findElement(By.id("closeBtn")).click();
+		 Hook.driver.switchTo().parentFrame();
 }
 
 }
