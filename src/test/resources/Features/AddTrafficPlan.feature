@@ -1,3 +1,4 @@
+@regression
 Feature: Add Tariff Plan in demo site
     Background:
     And    User click on add tariff plan button
@@ -22,7 +23,7 @@ Scenario: Add Customer with hard coded data
 Scenario: Add Customer with hard coded data
      
      When   User enters all the fields with two dimension map
-     |Ren|Loc|Int|Msg|LocRs|IntRs|MsgRs|
+     |MonRen|LocMin|IntMin|Msg|LocRs|IntRs|MsgRs|
      |239|420|260|69|1|2|1|
      |238|421|261|68|2|4|2|
      |259|428|263|67|2|5|2|
@@ -30,12 +31,12 @@ Scenario: Add Customer with hard coded data
      Then   Users should be displayed tariff plan  is added or not
 Scenario Outline: Title of your scenario outline
      
-     When   Users enters all the fields "<Ren>","<Loc>","<Int>","<Msg>","<LocRs>","<IntRs>","<MsgRs>"
+     When   Users enters all the fields "<MonRen>","<LocMin>","<IntMin>","<Msg>","<LocRs>","<IntRs>","<MsgRs>"
      And    Users click on submit button 
      Then   Users should be displayed tariff plan  is added or not
 
     Examples: 
-     |Ren|Loc|Int|Msg|LocRs|IntRs|MsgRs|
+     |MonRen|LocMin|IntMin|Msg|LocRs|IntRs|MsgRs|
      |239|420|260|69|1|2|1|
      |238|421|261|68|2|4|2|
      |259|428|263|67|2|5|2|
